@@ -1,4 +1,5 @@
 <?php
+
 namespace ASMBS\SSO;
 
 use GuzzleHttp\Client;
@@ -88,7 +89,7 @@ class SSO
         return $data['data']['idToken'];
     }
 
-    private function executeSearchMS(string $guid): array
+    public function executeSearchMS(string $guid): array
     {
         $client   = new Client();
         $response = $client->post('https://rest.membersuite.com/platform/v2/dataSuite/executeSearch', [
@@ -189,10 +190,10 @@ class SSO
 
         $this->log('WP user created', ['wp_user_id' => $user_id, 'role' => $wpRole]);
 
-        update_user_meta($user_id, 'mem_guid',   $id);
-        update_user_meta($user_id, 'mem_key',    $localID);
+        update_user_meta($user_id, 'mem_guid', $id);
+        update_user_meta($user_id, 'mem_key', $localID);
         update_user_meta($user_id, 'mem_status', $wpStatus);
-        update_user_meta($user_id, 'mem_type',   $wpType);
+        update_user_meta($user_id, 'mem_type', $wpType);
 
         if ($benefits === true) {
             $user = get_user_by('id', $user_id);
@@ -294,21 +295,21 @@ class SSO
     }
 
     private function resolveType(?string $typeName): string
-{
-    return match ($typeName) {
-        'Surgeon/Physician Membership',
-        'Surgeon/Physician Membership Renewal' => 'MD',
-        'Candidate Member'                     => 'CM',
-        'Corporate Council Representative'     => 'CC',
-        'Integrated Health',
-        'Integrated Health Renewal'            => 'IH',
-        'International',
-        'International Renewal'                => 'IN',
-        'Application'                          => 'AP',
-        'Friend'                               => 'FR',
-        default                                => '',
-    };
-}
+    {
+        return match ($typeName) {
+            'Surgeon/Physician Membership',
+            'Surgeon/Physician Membership Renewal' => 'MD',
+            'Candidate Member'                     => 'CM',
+            'Corporate Council Representative'     => 'CC',
+            'Integrated Health',
+            'Integrated Health Renewal'            => 'IH',
+            'International',
+            'International Renewal'                => 'IN',
+            'Application'                          => 'AP',
+            'Friend'                               => 'FR',
+            default                                => '',
+        };
+    }
 
     private function log(string $message, array $context = []): void
     {
@@ -318,5 +319,9 @@ class SSO
             $entry .= ' ' . json_encode($context, JSON_PRETTY_PRINT);
         }
         error_log($entry . PHP_EOL, 3, $this->logFile);
+    }
+    public function lookupByGuid(string $guid): array
+    {
+        return $this->executeSearchMS($guid);
     }
 }

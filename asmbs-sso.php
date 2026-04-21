@@ -15,7 +15,8 @@ if (file_exists(__DIR__ . '/vendor/autoload.php')) {
 }
 
 use ASMBS\SSO\SSO;
+use ASMBS\SSO\Settings;
 
-add_action('plugins_loaded', function() {
+add_action('plugins_loaded', function () {
     new SSO();
 });

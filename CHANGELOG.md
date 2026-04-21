@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.0.3] - 2026-04-21
+### Fixed
+- Updated formatting
+- Updated functions to support settings page
+
+### Added
+- Settings page in WP admin
+
 ## [1.0.2] - 2026-04-21
 ### Fixed
 - Renewal membership types now correctly resolve to the same WordPress role as their base type
