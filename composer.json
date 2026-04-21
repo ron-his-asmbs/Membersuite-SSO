@@ -1,8 +1,7 @@
 {
-    "name": "asmbs/sso",
+    "name": "asmbs/membersuite-sso",
     "description": "MemberSuite reverse SSO authentication for ASMBS.",
     "type": "wordpress-plugin",
-    "version": "1.0.0",
     "require": {
         "composer/installers": "^2.0",
         "php": ">=8.1",
