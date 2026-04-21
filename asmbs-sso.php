@@ -1,8 +1,8 @@
 <?php
 /**
- * Plugin Name: ASMBS Membersuite SSO
+ * Plugin Name: Membersuite SSO
  * Description: MemberSuite reverse SSO authentication for ASMBS members and staff.
- * Version: 1.0.0
+ * Version: 1.0.3
  * Author: ASMBS
  */
 
