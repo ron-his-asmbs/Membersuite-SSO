@@ -294,18 +294,21 @@ class SSO
     }
 
     private function resolveType(?string $typeName): string
-    {
-        return match ($typeName) {
-            'Surgeon/Physician Membership'     => 'MD',
-            'Candidate Member'                 => 'CM',
-            'Corporate Council Representative' => 'CC',
-            'Integrated Health'                => 'IH',
-            'International'                    => 'IN',
-            'Application'                      => 'AP',
-            'Friend'                           => 'FR',
-            default                            => '',
-        };
-    }
+{
+    return match ($typeName) {
+        'Surgeon/Physician Membership',
+        'Surgeon/Physician Membership Renewal' => 'MD',
+        'Candidate Member'                     => 'CM',
+        'Corporate Council Representative'     => 'CC',
+        'Integrated Health',
+        'Integrated Health Renewal'            => 'IH',
+        'International',
+        'International Renewal'                => 'IN',
+        'Application'                          => 'AP',
+        'Friend'                               => 'FR',
+        default                                => '',
+    };
+}
 
     private function log(string $message, array $context = []): void
     {

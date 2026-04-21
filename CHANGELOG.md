@@ -1,0 +1,31 @@
+# Changelog
+
+All notable changes to the ASMBS SSO plugin will be documented in this file.
+
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
+and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+
+## [Unreleased]
+
+## [1.0.2] - 2026-04-21
+### Fixed
+- Renewal membership types now correctly resolve to the same WordPress role as their base type
+- `resolveType()` now correctly maps renewal types to their `mem_type` shortcode (e.g. `Integrated Health Renewal` → `IH`)
+- Staff accounts with null membership type no longer cause a fatal error in `resolveWPRole()`
+
+## [1.0.2] - 2026-04-21
+### Fixed
+- Bug fixes
+
+## [1.0.0] - 2026-04-21
+### Added
+- Initial release — SSO logic migrated from `login-next-url.php` theme template to standalone plugin
+- `SSO` class handles full authentication flow via `template_redirect` hook
+- `RoleResolver` class maps MemberSuite membership types and benefit status to WordPress roles
+- User lookup by MemberSuite GUID, local ID, and email with fallback account creation
+- Role and capability assignment for `vote_md` and `vote_ih` based on membership type
+- Meta backfilling for `mem_guid`, `mem_key`, `mem_status`, `mem_type` on login
+- Staff accounts with no membership record preserve their existing WordPress role
+- SSO activity logged to `/tmp/sso-debug.log`
+- Guzzle HTTP client for MemberSuite API calls
+- PSR-4 autoloading under `ASMBS\SSO` namespace
