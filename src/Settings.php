@@ -12,8 +12,8 @@ class Settings
     public function addMenuPage(): void
     {
         add_options_page(
-            'ASMBS SSO',
-            'ASMBS SSO',
+            'Membersuite SSO',
+            'MS SSO',
             'manage_options',
             'asmbs-sso',
             [$this, 'renderPage']
