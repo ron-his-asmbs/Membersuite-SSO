@@ -59,3 +59,10 @@ When a user logs in the plugin attempts to find their WordPress account in this 
 ## Logging
 
 SSO activity is logged to `/tmp/sso-debug.log`. Each login attempt logs the user lookup, role assignment, and any meta backfilling.
+
+## Updating
+
+When creating a new version of this plugin, please be sure to update: 
+1. The CHANGELOG.md file
+2. The version number in asmbs-sso.php
+3. Tag release on github accordingly (which will trigger packagist rebuild)
